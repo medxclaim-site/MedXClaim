@@ -28,9 +28,9 @@ const Footer = () => {
       title: 'Support',
       links: [
         { label: 'Contact', href: '/contact' },
-        { label: 'Documentation', href: '#' },
-        { label: 'Blog', href: '#' },
-        { label: 'Resources', href: '#' }
+        { label: 'Documentation', href: '/contact' },
+        { label: 'Blog', href: '/contact' },
+        { label: 'Resources', href: '/contact' }
       ]
     }
   ];

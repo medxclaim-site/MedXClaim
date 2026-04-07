@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Target, Users, Zap, Award } from 'lucide-react';
 
 const WhyChooseUs = () => {
@@ -213,9 +214,9 @@ const WhyChooseUs = () => {
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Let's discuss how MedXClaim's specialized approach can transform your billing operations and boost your bottom line.
           </p>
-          <a href="/contact" className="btn-primary px-8 py-4 text-lg">
+          <Link to="/contact" className="btn-primary px-8 py-4 text-lg">
             Schedule Your Free Consultation
-          </a>
+          </Link>
         </motion.div>
       </section>
     </div>
