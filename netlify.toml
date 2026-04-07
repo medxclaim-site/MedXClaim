@@ -2,17 +2,14 @@
 # Production deployment configuration with medxclaim.com domain
 
 [build]
-# Command to build the project
 command = "npm ci && npm run build"
-# Directory where the build output is placed
 publish = "dist"
+functions = "netlify/functions"
 
-# Environment variables
 [build.environment]
 NODE_VERSION = "18.16.0"
 NPM_VERSION = "9.8.0"
 
-# Production context
 [context.production]
 command = "npm ci && npm run build"
 publish = "dist"
@@ -20,7 +17,6 @@ publish = "dist"
 [context.production.environment]
 NODE_VERSION = "18.16.0"
 
-# Preview/branch deployments
 [context.branch-deploy]
 command = "npm ci && npm run build"
 publish = "dist"
@@ -28,77 +24,56 @@ publish = "dist"
 [context.branch-deploy.environment]
 NODE_VERSION = "18.16.0"
 
-# Redirect all routes to index.html for React Router SPA
 [[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
 force = false
 
-# Security headers for all requests
 [[headers]]
 for = "/*"
 [headers.values]
-  # Prevent content type sniffing
   X-Content-Type-Options = "nosniff"
-  # Prevent clickjacking
   X-Frame-Options = "SAMEORIGIN"
-  # Enable XSS protection
   X-XSS-Protection = "1; mode=block"
-  # Referrer policy
   Referrer-Policy = "strict-origin-when-cross-origin"
-  # Feature policy / Permissions policy
   Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-  # HTTPS enforcement (uncomment in production)
-  # Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-# Cache control for static assets (long-term caching)
 [[headers]]
 for = "/assets/*"
 [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache control for JavaScript and CSS
 [[headers]]
 for = "/(js|css)/*"
 [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache control for HTML files (short-term caching)
 [[headers]]
 for = "/*.html"
 [headers.values]
   Cache-Control = "public, max-age=3600, must-revalidate, no-cache"
 
-# Cache control for index.html specifically
 [[headers]]
 for = "/index.html"
 [headers.values]
   Cache-Control = "public, max-age=3600, must-revalidate, no-cache"
 
-# Cache SVG assets
 [[headers]]
 for = "/*.svg"
 [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache font files
 [[headers]]
 for = "/*.{woff,woff2,ttf,otf,eot}"
 [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
 
-# Compress text assets
 [[headers]]
 for = "/*.json"
 [headers.values]
   Cache-Control = "public, max-age=3600, must-revalidate"
 
-# Performance monitoring
-[build]
-functions = "netlify/functions"
-
-# Error pages
 [[redirects]]
 from = "/404"
 to = "/index.html"
