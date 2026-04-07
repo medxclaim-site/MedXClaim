@@ -1,0 +1,174 @@
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message. We will get back to you soon!');
+    setFormData({ name: '', email: '', company: '', message: '' });
+  };
+
+  return (
+    <div className="pt-16">
+      <section className="section">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-5xl font-bold text-white mb-6">Contact MedXClaim</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Ready to optimize your healthcare billing operations? Let's discuss how we can support your Medicaid, VA, and authorization workflows.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="card"
+            >
+              <h2 className="text-3xl font-semibold text-white mb-6">Send Us a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-white font-medium mb-2">Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-white font-medium mb-2">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    placeholder="your.email@company.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-white font-medium mb-2">Company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    placeholder="Your organization"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-white font-medium mb-2">Message *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 resize-none"
+                    placeholder="Tell us about your billing needs and how we can help..."
+                  />
+                </div>
+
+                <button type="submit" className="btn-primary w-full flex items-center justify-center">
+                  <Send className="w-5 h-5 mr-2" />
+                  Send Message
+                </button>
+              </form>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="space-y-8"
+            >
+              <div className="card">
+                <h3 className="text-2xl font-semibold text-white mb-6">Get in Touch</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <Mail className="w-6 h-6 text-teal-400 mr-4" />
+                    <div>
+                      <p className="text-white font-medium">Email</p>
+                      <p className="text-gray-300">hello@medxclaim.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="w-6 h-6 text-teal-400 mr-4" />
+                    <div>
+                      <p className="text-white font-medium">Phone</p>
+                      <p className="text-gray-300">+1 (000) 000-0000</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="w-6 h-6 text-teal-400 mr-4" />
+                    <div>
+                      <p className="text-white font-medium">Location</p>
+                      <p className="text-gray-300">US-Based Healthcare Billing Support</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 className="text-2xl font-semibold text-white mb-4">Why Contact Us?</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    Free initial consultation and workflow assessment
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    Customized billing support solutions
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    HIPAA-compliant communication and data handling
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                    Dedicated account management and support
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Contact;
