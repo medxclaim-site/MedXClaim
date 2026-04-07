@@ -182,7 +182,7 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { stat: "98%", label: "Claim Accuracy Rate" },
-              { stat: "10+", label: "Years of Billing Expertise" },
+              { stat: "9+", label: "Years of Billing Expertise" },
               { stat: "24h", label: "Average Response Time" }
             ].map((item, idx) => (
               <motion.div
