@@ -1,0 +1,7 @@
+/* Netlify SPA Redirect Fallback */
+/* This is a backup redirect file for React Router SPA */
+/*
+  This file ensures all routes are redirected to index.html
+  so React Router can handle routing on the client side.
+  Note: netlify.toml is the primary configuration.
+*/

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+
+# Sitemap
+Sitemap: https://medxclaim.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

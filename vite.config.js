@@ -14,4 +14,35 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, './src/hooks'),
     },
   },
+  build: {
+    // Optimize output
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: false, // Keep console logs during development
+      },
+    },
+    // Better chunking for caching
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          motion: ['framer-motion'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
+    // Output settings
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false, // Disable source maps in production
+    chunkSizeWarningLimit: 1000,
+  },
+  // Performance optimizations
+  server: {
+    compress: true,
+    headers: {
+      'X-Content-Type-Options': 'nosniff',
+    },
+  },
 })
