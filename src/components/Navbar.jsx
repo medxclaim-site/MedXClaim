@@ -30,9 +30,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <Link 
             to="/" 
-            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-teal-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+            className="text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-300"
           >
-            MedXClaim
+            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-teal-400 bg-clip-text text-transparent">Med</span>
+            <span className="text-white">X</span>
+            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-teal-400 bg-clip-text text-transparent">Claim</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-1">

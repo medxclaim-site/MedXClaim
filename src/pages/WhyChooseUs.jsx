@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
       {/* Key Reasons Grid */}
       <section className="section">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-stretch">
             {reasons.map((reason, index) => (
               <motion.div
                 key={index}
@@ -63,7 +63,7 @@ const WhyChooseUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="card group"
+                className="card group h-full min-h-[24rem] flex flex-col"
               >
                 <reason.icon className="w-14 h-14 text-blue-400 mb-6 group-hover:text-teal-400 transition-colors duration-300" />
                 <h3 className="text-2xl font-bold text-white mb-4">{reason.title}</h3>
@@ -86,7 +86,7 @@ const WhyChooseUs = () => {
             <p className="section-subtitle">Four proven steps to billing transformation</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
             {[
               {
                 num: "1",
@@ -118,17 +118,19 @@ const WhyChooseUs = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.12 }}
-                className="relative"
+                className="relative h-full"
               >
-                <div className="card text-center group">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <step.icon className="w-8 h-8 text-white" />
+                <div className="card text-center group h-full min-h-[24rem] flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <step.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      {step.num}
+                    </div>
+                    <h4 className="text-2xl font-bold text-white mb-3">{step.title}</h4>
+                    <p className="text-gray-300">{step.desc}</p>
                   </div>
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                    {step.num}
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-3">{step.title}</h4>
-                  <p className="text-gray-300">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
