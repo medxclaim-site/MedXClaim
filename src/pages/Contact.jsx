@@ -36,7 +36,7 @@ const Contact = () => {
           >
             <h1 className="text-5xl font-bold text-white mb-6">Contact MedXClaim</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Ready to optimize your healthcare billing operations? Let's discuss how we can support your Medicaid, VA, and authorization workflows.
+              Ready to optimize your healthcare billing operations? Let&apos;s discuss how we can support your Medicaid, VA, and authorization workflows.
             </p>
           </motion.div>
 

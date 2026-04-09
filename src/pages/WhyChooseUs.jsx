@@ -212,7 +212,7 @@ const WhyChooseUs = () => {
         >
           <h2 className="text-5xl font-bold text-white mb-6">Experience the Difference</h2>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Let's discuss how MedXClaim's specialized approach can transform your billing operations and boost your bottom line.
+            Let&apos;s discuss how MedXClaim&apos;s specialized approach can transform your billing operations and boost your bottom line.
           </p>
           <Link to="/contact" className="btn-primary px-8 py-4 text-lg">
             Schedule Your Free Consultation

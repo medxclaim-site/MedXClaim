@@ -160,7 +160,7 @@ const About = () => {
         >
           <h2 className="text-5xl font-bold text-white mb-6">Ready to Partner with MedXClaim?</h2>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Let's discuss how our specialized billing support can transform your healthcare operations.
+            Let&apos;s discuss how our specialized billing support can transform your healthcare operations.
           </p>
           <a href="/contact" className="btn-primary px-8 py-4 text-lg">
             Schedule a Consultation

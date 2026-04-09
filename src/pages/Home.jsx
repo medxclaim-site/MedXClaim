@@ -279,7 +279,7 @@ const Home = () => {
           <div className="text-center">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">Ready to Optimize Your Billing?</h2>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Join healthcare providers who have transformed their billing operations with MedXClaim's specialized support.
+              Join healthcare providers who have transformed their billing operations with MedXClaim&apos;s specialized support.
             </p>
             <a href="/contact" className="btn-primary px-8 py-4 text-lg flex items-center justify-center gap-2 mx-auto w-fit">
               Schedule Your Free Consultation <ArrowRight size={20} />

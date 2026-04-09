@@ -75,7 +75,7 @@ const Industries = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mt-16 card max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Don't See Your Industry?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Don&apos;t See Your Industry?</h2>
             <p className="text-gray-300 text-lg mb-6">
               We provide customized billing support for various healthcare service providers. Contact us to discuss your specific needs.
             </p>
