@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Target, Users, Zap, Award } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
 const WhyChooseUs = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.whyChooseUs);
   const reasons = [
     {
       icon: Target,
@@ -86,7 +89,7 @@ const WhyChooseUs = () => {
             <p className="section-subtitle">Four proven steps to billing transformation</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 auto-rows-fr items-stretch">
             {[
               {
                 num: "1",
@@ -118,17 +121,17 @@ const WhyChooseUs = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.12 }}
-                className="relative"
+                className="relative h-full"
               >
-                <div className="card text-center group">
+                <div className="card h-full flex flex-col items-center text-center group">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {step.num}
                   </div>
-                  <h4 className="text-2xl font-bold text-white mb-3">{step.title}</h4>
-                  <p className="text-gray-300">{step.desc}</p>
+                  <h4 className="text-2xl font-bold text-white mb-3 min-h-[64px] flex items-center">{step.title}</h4>
+                  <p className="text-gray-300 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}

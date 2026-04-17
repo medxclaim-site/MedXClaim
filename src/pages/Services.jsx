@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight, Zap, Target, Shield, FileCheck, AlertCircle, TrendingUp } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
 const Services = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.services);
   const services = [
     {
       icon: Target,
@@ -164,7 +167,7 @@ const Services = () => {
               },
               {
                 title: "Compliance-First",
-                desc: "Every process is designed around regulatory requirements and HIPAA-compliant practices.",
+                desc: "Every process is designed around regulatory requirements and privacy-focused practices.",
               },
               {
                 title: "Scalable Support",
@@ -221,7 +224,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className={`card ${idx === 1 ? 'ring-2 ring-teal-400' : ''}`}
+                className="card"
               >
                 <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
                 <p className="text-gray-400 mb-6">{pkg.desc}</p>

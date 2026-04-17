@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
 const FAQ = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.faq);
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
     {
       question: "What is GAMMIS and how does it affect Medicaid billing?",
-      answer: "GAMMIS (Georgia Medical Assistance Management Information System) is Georgia's Medicaid management system. We provide specialized support for GAMMIS claim submission, corrections, and provider-specific reporting requirements to ensure smooth Medicaid reimbursement."
+      answer: "GAMMIS (Medicaid Management Information System) is a Medicaid management platform. We provide specialized support for GAMMIS claim submission, corrections, and provider-specific reporting requirements to ensure smooth Medicaid reimbursement."
     },
     {
       question: "How does Tellus integration work with billing workflows?",
@@ -19,8 +22,8 @@ const FAQ = () => {
       answer: "VA billing involves specific documentation requirements, priority processing for veteran care, and unique reimbursement structures. Our team specializes in VA claim preparation, documentation audit, and status monitoring to ensure veterans receive timely care funding."
     },
     {
-      question: "How do you ensure HIPAA compliance in billing operations?",
-      answer: "We maintain strict HIPAA compliance through secure data handling, encrypted communications, access controls, and regular compliance training. All billing operations follow healthcare privacy regulations and industry best practices."
+      question: "How do you ensure secure and compliant billing operations?",
+      answer: "We follow secure data handling, encrypted communications, strict access controls, and regular compliance reviews. All billing operations align with healthcare privacy requirements and industry best practices."
     },
     {
       question: "What is the typical onboarding process for new clients?",

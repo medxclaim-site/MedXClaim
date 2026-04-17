@@ -2,44 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://medxclaim.com/</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/services</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/industries</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/why-choose-us</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/about</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/faq</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://medxclaim.com/contact</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medxclaim.com/privacy-policy</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://medxclaim.com/terms-of-service</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

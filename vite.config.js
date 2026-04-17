@@ -4,7 +4,19 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      fastRefresh: true, // Enable fast refresh for instant updates
+      // Babel config for faster compilation
+      babel: {
+        parserOpts: {
+          sourceType: 'module',
+          allowImportExportEverywhere: true,
+          allowReturnOutsideFunction: true,
+        },
+      },
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -40,9 +52,21 @@ export default defineConfig({
   },
   // Performance optimizations
   server: {
+    host: true,
+    port: 5173,
+    strictPort: true, // Don't fallback — keeps HMR port consistent
     compress: true,
+    hmr: true, // Let Vite auto-manage HMR on same port (no mismatch)
     headers: {
       'X-Content-Type-Options': 'nosniff',
+    },
+  },
+  // Much faster dev builds with smart caching
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'lucide-react'],
+    exclude: [],
+    esbuildOptions: {
+      target: 'esnext', // Faster transpilation
     },
   },
 })

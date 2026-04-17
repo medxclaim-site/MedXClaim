@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Target, Shield, Users, Award, Zap, Heart } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
 const About = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.about);
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -127,7 +130,7 @@ const About = () => {
               {
                 icon: Shield,
                 title: "Compliance & Security",
-                desc: "HIPAA compliance, secure operations, and regulatory adherence are non-negotiable."
+                desc: "Secure operations, privacy-focused workflows, and regulatory adherence are non-negotiable."
               },
               {
                 icon: Heart,

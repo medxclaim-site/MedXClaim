@@ -1,28 +1,63 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Send } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
+import { submitContactForm, sendContactAutoReply } from '../services/contactService';
+import { sanitizeInput, validateEmail } from '../utils/validation';
 
 const Contact = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.contact);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
+    setSubmitError('');
+    setSubmitMessage('');
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message. We will get back to you soon!');
-    setFormData({ name: '', email: '', company: '', message: '' });
+
+    const payload = {
+      name: sanitizeInput(formData.name),
+      email: sanitizeInput(formData.email).toLowerCase(),
+      company: sanitizeInput(formData.company),
+      message: sanitizeInput(formData.message),
+      source: 'website-contact-form',
+    };
+
+    if (!validateEmail(payload.email)) {
+      setSubmitError('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+    setSubmitMessage('');
+
+    try {
+      await submitContactForm(payload);
+      // Fire-and-forget auto-reply; do not block success on email delivery
+      sendContactAutoReply({ name: payload.name, email: payload.email }).catch(() => {});
+      setSubmitMessage('Thank you. Your message has been received. Check your inbox for a confirmation email.');
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } catch (error) {
+      setSubmitError('Unable to submit right now. Please email support@medxclaim.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,10 +138,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn-primary w-full flex items-center justify-center">
+                <button type="submit" disabled={isSubmitting} className="btn-primary w-full flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed">
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {submitMessage ? <p className="text-sm text-emerald-300">{submitMessage}</p> : null}
+                {submitError ? <p className="text-sm text-red-300">{submitError}</p> : null}
               </form>
             </motion.div>
 
@@ -122,7 +160,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-teal-400 mr-4" />
                     <div>
                       <p className="text-white font-medium">Email</p>
-                      <p className="text-gray-300">hello@medxclaim.com</p>
+                      <a href="mailto:support@medxclaim.com" className="text-gray-300 hover:text-teal-400 transition-colors">support@medxclaim.com</a>
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -130,13 +168,6 @@ const Contact = () => {
                     <div>
                       <p className="text-white font-medium">Phone</p>
                       <p className="text-gray-300">+1 (000) 000-0000</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <MapPin className="w-6 h-6 text-teal-400 mr-4" />
-                    <div>
-                      <p className="text-white font-medium">Location</p>
-                      <p className="text-gray-300">US-Based Healthcare Billing Support</p>
                     </div>
                   </div>
                 </div>
@@ -155,7 +186,7 @@ const Contact = () => {
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                    HIPAA-compliant communication and data handling
+                    Secure communication and privacy-focused data handling
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-teal-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>

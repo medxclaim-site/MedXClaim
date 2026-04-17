@@ -2,9 +2,23 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
+Disallow: /portal
+Disallow: /login
+Disallow: /register
 
-# Sitemap
+# Google-specific
+User-agent: Googlebot
+Allow: /
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
 Sitemap: https://medxclaim.com/sitemap.xml
 
-# Crawl delay (optional)
+# Crawl delay (in seconds)
 Crawl-delay: 1
+
+# Request rate limit
+Request-rate: 1/10s

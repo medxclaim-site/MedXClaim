@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -55,7 +55,9 @@ const Footer = () => {
             >
               <Link to="/" className="inline-block mb-6">
                 <span className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-teal-400 bg-clip-text text-transparent">
-                  MedXClaim
+                  <span>Med</span>
+                  <span className="text-white">X</span>
+                  <span>Claim</span>
                 </span>
               </Link>
               <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-md">
@@ -68,11 +70,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300">
                   <Mail size={18} className="text-teal-400 flex-shrink-0" />
-                  <a href="mailto:hello@medxclaim.com" className="hover:underline">hello@medxclaim.com</a>
-                </div>
-                <div className="flex items-center gap-3 text-gray-300">
-                  <MapPin size={18} className="text-teal-400 flex-shrink-0" />
-                  <span>US-Based Support</span>
+                  <a href="mailto:support@medxclaim.com" className="hover:underline">support@medxclaim.com</a>
                 </div>
               </div>
             </motion.div>
@@ -125,9 +123,8 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-gray-400 text-sm">
               <p>&copy; {currentYear} MedXClaim. All rights reserved.</p>
               <div className="flex gap-6">
-                <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>
-                <a href="#" className="hover:text-white transition-colors duration-300">HIPAA Notice</a>
+                <Link to="/privacy-policy" className="hover:text-white transition-colors duration-300">Privacy Policy</Link>
+                <Link to="/terms-of-service" className="hover:text-white transition-colors duration-300">Terms of Service</Link>
               </div>
             </div>
           </div>

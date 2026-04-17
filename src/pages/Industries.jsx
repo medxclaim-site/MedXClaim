@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Building, Heart, Users, Stethoscope } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
 const Industries = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.industries);
   const industries = [
     {
       icon: Building,

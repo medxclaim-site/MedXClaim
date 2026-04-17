@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Zap, Shield, Target } from 'lucide-react';
+import { useSEO, SEO_PRESETS } from '../hooks/useSEO';
 
-const AnimatedCounter = ({ end, duration = 2000 }) => {
+const AnimatedCounter = ({ end, duration = 2000, suffix = '+', valueClassName = 'text-white', suffixClassName = 'text-gray-400' }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -16,10 +17,18 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
     requestAnimationFrame(animate);
   }, [end, duration]);
 
-  return <span className="font-bold text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text">{count.toLocaleString()}+</span>;
+  return (
+    <>
+      <span className={valueClassName}>{count.toLocaleString()}</span>
+      {suffix ? <span className={suffixClassName}>{suffix}</span> : null}
+    </>
+  );
 };
 
 const Home = () => {
+  // Set SEO meta tags for this page
+  useSEO(SEO_PRESETS.home);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -97,7 +106,8 @@ const Home = () => {
             >
               <div className="text-center">
                 <p className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  <AnimatedCounter end={98} />
+                  <AnimatedCounter end={98} suffix="%" valueClassName="text-white" suffixClassName="text-white" />
+                  <span className="text-gray-400">+</span>
                 </p>
                 <p className="text-gray-400 text-sm md:text-base">Accuracy Rate</p>
               </div>
@@ -237,7 +247,7 @@ const Home = () => {
             <p className="section-subtitle">A simple, proven process for stronger billing outcomes</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 auto-rows-fr items-stretch">
             {[
               { num: "1", title: "Assess Workflow", desc: "Review existing claims, authorizations, and documentation" },
               { num: "2", title: "Organize Documentation", desc: "Align details for accurate submission" },
@@ -249,17 +259,17 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="relative"
+                className="relative h-full"
               >
-                <div className="card text-center">
+                <div className="card h-full flex flex-col items-center text-center justify-start">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">
                     {step.num}
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
-                  <p className="text-gray-400">{step.desc}</p>
+                  <h4 className="text-xl font-bold text-white mb-3 min-h-[56px] flex items-center justify-center">{step.title}</h4>
+                  <p className="text-gray-400 leading-relaxed">{step.desc}</p>
                 </div>
                 {idx < 3 && (
-                  <div className="hidden md:flex absolute top-1/3 -right-3 w-6 h-6 items-center justify-center text-teal-400">
+                  <div className="hidden xl:flex absolute top-1/2 -translate-y-1/2 -right-3 w-6 h-6 items-center justify-center text-teal-400">
                     <ArrowRight size={20} />
                   </div>
                 )}
