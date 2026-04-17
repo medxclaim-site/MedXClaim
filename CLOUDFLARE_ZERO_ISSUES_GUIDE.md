@@ -45,6 +45,24 @@ Your code has been verified:
 
 ---
 
+### **Troubleshooting: API Token Permissions**
+
+If you see "Authentication error [code: 10000]" in the deploy logs:
+
+1. **Go to**: https://dash.cloudflare.com/profile/api-tokens
+2. **Find your token** (associated with medxclaim@gmail.com)
+3. **Click "Edit"** on the token
+4. **Add Permission**:
+   - **Product**: Cloudflare Pages
+   - **Permission**: Edit
+   - **Resources**: All accounts
+5. **Save** the token
+6. **Retry deployment** in Cloudflare Pages
+
+**OR** remove `CLOUDFLARE_API_TOKEN` from Pages environment variables if not needed.
+
+---
+
 ### **Step 3: Add Firebase Environment Variables**
 
 **NAVIGATE TO**:
