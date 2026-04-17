@@ -1,0 +1,39 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "medxclaim"
+type = "javascript"
+compatibility_date = "2024-04-12"
+
+[env.production]
+routes = [
+  { pattern = "medxclaim.com", zone_name = "medxclaim.com" }
+]
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_paths = ["src/**/*.jsx", "src/**/*.js", "package.json"]
+upload = { format = "service-worker" }
+
+[build.upload]
+format = "modules"
+main = "dist"
+
+[env.production.build]
+cwd = "."
+command = "npm run build"
+
+[[env.production.routes]]
+pattern = "medxclaim.com/*"
+zone_name = "medxclaim.com"
+
+# Production environment variables
+[env.production.vars]
+VITE_API_BASE = "https://medxclaim.com"
+
+# For local development
+[env.development]
+route = "*"
+zone_name = "*"
+
+[[pages.build.watch_paths]]
+pattern = "src/**/*.{jsx,js,css}"
