@@ -35,7 +35,7 @@ Your code has been verified:
 | **Build command** | `npm run build` |
 | **Build output directory** | `dist` |
 | **Root directory** | (leave empty) |
-| **Deploy command** | `npx wrangler pages deploy dist` ← 🔑 KEY! |
+| **Deploy command** | `npx wrangler pages deploy dist --project-name medxclaim` ← 🔑 KEY! |
 
 **HOW TO SET IT**:
 1. Click on each field
