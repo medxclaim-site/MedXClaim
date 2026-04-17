@@ -1,21 +1,10 @@
 # Cloudflare Pages Configuration
-# For MedXClaim React + Vite project
-# Note: Build settings are configured in Cloudflare Pages dashboard, not here
+# DO NOT use this file for Pages deployment
+# Configure build settings directly in Cloudflare Pages dashboard:
+# - Build Command: npm run build
+# - Build Output Directory: dist
+# - Environment Variables: Added in Pages dashboard
 
+# This file is kept minimal to avoid conflicts
 name = "medxclaim"
-type = "javascript"
 compatibility_date = "2024-04-12"
-
-# Build configuration
-[build]
-command = "npm run build"
-cwd = "."
-watch_paths = ["src/**/*.jsx", "src/**/*.js", "package.json"]
-
-# Pages deployment
-[pages]
-name = "medxclaim"
-
-# Production environment
-[env.production.vars]
-VITE_API_BASE = "https://medxclaim.com"
