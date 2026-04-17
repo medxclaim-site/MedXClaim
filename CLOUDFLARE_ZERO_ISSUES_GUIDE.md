@@ -35,7 +35,7 @@ Your code has been verified:
 | **Build command** | `npm run build` |
 | **Build output directory** | `dist` |
 | **Root directory** | (leave empty) |
-| **Deploy command** | (leave **EMPTY/BLANK**) ← 🔑 KEY! |
+| **Deploy command** | `npx wrangler pages deploy dist` ← 🔑 KEY! |
 
 **HOW TO SET IT**:
 1. Click on each field
